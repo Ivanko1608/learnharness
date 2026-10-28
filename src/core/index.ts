@@ -51,6 +51,7 @@ export * from "./answer-presentation.ts";
 export * from "./prices.ts";
 export * from "./context-usage.ts";
 export type { ChatGPTStatus, ChatGPTControlBridge } from "./contracts/chatgpt.ts";
+export { CLAUDE_CODE_PROVIDER } from "./contracts/claude-code.ts";
 export { NATIVE_SUBSCRIPTIONS } from "./contracts/subscriptions.ts";
 export type { NativeSubscriptionProviderId, NativeSubscriptionLogicalId, NativeSubscriptionStatus, NativeSubscriptionSnapshot, NativeSubscriptionScope, NativeSubscriptionControlBridge, SubscriptionInteraction, SubscriptionPrompt } from "./contracts/subscriptions.ts";
 export * from "./cost-summary.ts";

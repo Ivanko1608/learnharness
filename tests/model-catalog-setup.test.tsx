@@ -124,7 +124,7 @@ test("zero providers always means exclusive connection stage; reconnect with all
 	assert.equal(document.querySelector('[data-testid="setup-save"]'), null);
 	await act(async () => notifySettingsSaved("keys"));
 	const other = catalog(false); other.providers = [{ id: "other", envVar: "OTHER_KEY", keyPresent: true }];
-	await answer(3, other);
+	await answer(4, other);
 	assert.equal(closed, 1); assert.equal(completed, 0); assert.deepEqual(writes, []);
 	assert.equal(document.querySelector('[data-testid="setup-dialog"]'), null, "no intermediate picker frame after reconnect");
 });
@@ -174,12 +174,12 @@ test("a partial setup's model/thinking edits survive exclusive provider recovery
 	await click("setup-thinking-strong"); await click("thinking-option-medium");
 	await act(async () => notifySettingsSaved("keys")); await answer(2, { ...before, models: [], providers: [] });
 	assert.ok(element("setup-stage-keys")); assert.equal(document.querySelector('[data-testid="setup-stage-pickers"]'), null);
-	await act(async () => notifySettingsSaved("keys")); await answer(3, before);
+	await act(async () => notifySettingsSaved("keys")); await answer(4, before);
 	assert.equal(element("setup-trigger-strong").textContent, "claude-opus-5-5▾");
 	assert.equal(element("setup-thinking-strong").textContent?.trim(), "medium▾");
 	await render(<Reader />); await render(<><Reader />{setup()}</>);
 	assert.equal(element("setup-trigger-strong").textContent, "model:free▾");
-	assert.equal(element("setup-thinking-strong").textContent?.trim(), "low▾"); await answer(4, before);
+	assert.equal(element("setup-thinking-strong").textContent?.trim(), "low▾"); await answer(5, before);
 });
 
 test("Agent opens with cached thinking metadata; refresh and disconnect never clear saved levels", async () => {
